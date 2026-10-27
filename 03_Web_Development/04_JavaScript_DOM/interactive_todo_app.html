@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Coursework Task Tracker</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0d1117; color: #c9d1d9; padding: 30px; display: flex; justify-content: center; }
+        .todo-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px; width: 100%; max-width: 480px; }
+        .input-row { display: flex; gap: 8px; margin-bottom: 15px; }
+        input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #f0f6fc; }
+        button.add-btn { background: #1f6feb; border: none; border-radius: 6px; color: white; padding: 10px 16px; font-weight: 600; cursor: pointer; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 10px 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .del-btn { background: #da3633; border: none; border-radius: 4px; color: white; padding: 4px 8px; cursor: pointer; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="todo-box">
+        <h2 style="color: #f0f6fc; margin-top: 0;">3rd Sem Task Tracker</h2>
+        <div class="input-row">
+            <input type="text" id="taskInput" placeholder="e.g. Implement Red-Black Tree in C++">
+            <button class="add-btn" id="addBtn">Add Task</button>
+        </div>
+        <ul id="taskList">
+            <li><span>Complete C++ OOP Inheritance practicals</span><button class="del-btn" onclick="this.parentElement.remove()">Done</button></li>
+            <li><span>Solve LeetCode #121 (Stock Max Profit)</span><button class="del-btn" onclick="this.parentElement.remove()">Done</button></li>
+        </ul>
+    </div>
+    <script>
+        document.getElementById('addBtn').addEventListener('click', function() {
+            const val = document.getElementById('taskInput').value.trim();
+            if (!val) return;
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${val}</span><button class="del-btn" onclick="this.parentElement.remove()">Done</button>`;
+            document.getElementById('taskList').appendChild(li);
+            document.getElementById('taskInput').value = '';
+        });
+    </script>
+</body>
+</html>
